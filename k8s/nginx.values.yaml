@@ -1,0 +1,10 @@
+controller:
+  extraArgs:
+    default-ssl-certificate: ${default_ssl_certificate}
+  service:
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+      service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "${load_balancer_subnet}"
+      service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz
+    externalTrafficPolicy: Local
+    loadBalancerIP: ${load_balancer_ip}
